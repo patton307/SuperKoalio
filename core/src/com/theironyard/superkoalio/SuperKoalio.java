@@ -20,6 +20,7 @@ public class SuperKoalio extends ApplicationAdapter {
     Animation walk;
     FitViewport viewport;
 
+    // Defining the movement variables
     float x = 0;
     float y = 0;
     float xv = 0;
@@ -27,13 +28,17 @@ public class SuperKoalio extends ApplicationAdapter {
     float time = 0;
     boolean canJump = true;
 
+    // How fast you want the Koalio to move
     final float MAX_VELOCITY = 500;
-    final float MAX_JUMP_VELOCITY = 500;
+    final float MAX_JUMP_VELOCITY = 1000;
+
+    // Koalio sprite image
     final int WIDTH = 18;
     final int HEIGHT = 26;
     final int DRAW_WIDTH = WIDTH + 3;
     final int DRAW_HEIGHT = HEIGHT + 3;
 
+    // Setting Gravity: Makes Koalio come back to the ground after jumping
     final int GRAVITY = -50;
 
 
@@ -42,8 +47,10 @@ public class SuperKoalio extends ApplicationAdapter {
         batch = new SpriteBatch();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+        // Importing Koalio sprite sheet.  Splitting the sheet.
         Texture sheet = new Texture("koalio.png");
         TextureRegion[][] tiles = TextureRegion.split(sheet, WIDTH, HEIGHT);
+        // Creating individual movement sprites for Koalio
         stand = tiles[0][0];
         jump = tiles[0][1];
         walk = new Animation(0.1f, tiles[0][2], tiles[0][3], tiles[0][4]);
